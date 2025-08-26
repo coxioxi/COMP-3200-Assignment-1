@@ -78,6 +78,19 @@ def ascend(xs):
     """
     pass
 
+    count = 1
+    
+    while(count < len(xs)-1):
+        if(not xs):
+            return xs
+        elif (xs[count] > xs[count+1]):
+            del xs[count+1]
+        else:
+            count += 1      
+    
+    return xs
+        
+
 
 def closest_point(xys):
     """
@@ -90,6 +103,9 @@ def closest_point(xys):
     (-0.5, 0)
     """
     pass
+
+
+
 
 
 def count_if(p, xs):
