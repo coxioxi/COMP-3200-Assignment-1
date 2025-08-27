@@ -101,8 +101,31 @@ def closest_point(xys):
 
     >>> closest_point([(1,2),(4,-2),(-0.5,0),(3.14,2)])
     (-0.5, 0)
+    >>> closest_point([(5,5), (1,1), (3,4)])
+    (1, 1)
+    >>> closest_point([(0,0), (2,3), (-1,-1)])
+    (0, 0)
+    >>> closest_point([(0,5), (5,0), (2,0)])
+    (2, 0)
+    >>> closest_point([(1.5, 2.5), (1.2, 1.1), (-0.5, -0.4)])
+    (-0.5, -0.4)
     """
     pass
+
+    list = []
+    index = 0
+
+    for i in range(len(xys)):
+        list.append((xys[i][0] + xys[i][1])/2)
+
+    for i in range(len(list)):
+        for j in range(len(list)):
+            if (list[i] < list[j]):
+                index = i
+
+    return xys[index]
+
+    
 
 
 
