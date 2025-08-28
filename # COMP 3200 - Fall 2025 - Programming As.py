@@ -99,35 +99,32 @@ def closest_point(xys):
     points are equally close, return the one that appears earliest in
     the list. If the list is empty, return None. For example,
 
+    >>> closest_point([])
+    >>> closest_point([(3,4)])
+    (3, 4)
     >>> closest_point([(1,2),(4,-2),(-0.5,0),(3.14,2)])
     (-0.5, 0)
-    >>> closest_point([(5,5), (1,1), (3,4)])
+    >>> closest_point([(1,1), (3,4), (5,5)])
     (1, 1)
-    >>> closest_point([(0,0), (2,3), (-1,-1)])
+    >>> closest_point([(2,3), (0,0), (-1,-1)])
     (0, 0)
-    >>> closest_point([(0,5), (5,0), (2,0)])
+    >>> closest_point([(0,5), (2,0), (5,0)])
     (2, 0)
     >>> closest_point([(1.5, 2.5), (1.2, 1.1), (-0.5, -0.4)])
     (-0.5, -0.4)
     """
     pass
 
-    list = []
-    index = 0
+    distance = []
 
-    for i in range(len(xys)):
-        list.append((xys[i][0] + xys[i][1])/2)
-
-    for i in range(len(list)):
-        for j in range(len(list)):
-            if (list[i] < list[j]):
-                index = i
-
-    return xys[index]
-
+    if(not xys):
+        return None
     
-
-
+    for point in xys:
+        distance.append((point[0]**2 + point[1]**2)**0.5)
+    
+    return xys[distance.index(min(distance))]
+    
 
 
 
@@ -139,8 +136,16 @@ def count_if(p, xs):
     4
     >>> count_if(lambda c: c.isupper(), list('Heavy Rain'))
     2
+    >>> count_if(lambda s: len(s) == 3, ['hi', 'hello', 'hey', 'yo', 'sup'])
+    2
+    >>> count_if(lambda x: x < 0, [1,2,3])
+    0
+    >>> count_if(lambda x: True, [])
+    0
     """
     pass
+
+    return len([x for x in xs if p(x)])
 
 
 def find_last(p, xs):
