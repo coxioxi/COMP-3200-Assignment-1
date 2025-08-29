@@ -26,6 +26,10 @@ def tnp1(n):
     6
     >>> tnp1(11)
     15
+    >>> tnp1(1)
+    1
+    >>> tnp1(2)
+    2
 
     Remember that // performs integer division in Python.
     """
@@ -51,6 +55,10 @@ def multRange(a, b):
     360
     >>> multRange(5, 2)
     1
+    >>> multRange(-2, 2)
+    0
+    >>> multRange(-3, -1)
+    -6
     
     """
     pass
@@ -75,10 +83,14 @@ def ascend(xs):
     ['g', 'o', 't']
     >>> ascend([1,3,2,6,5,6,9,0])
     [1, 3, 6, 6, 9]
+    >>> ascend([1,2,3,4,5])
+    [1, 2, 3, 4, 5]
+    >>> ascend([5,4,3,2,1])
+    [5]
     """
     pass
 
-    count = 1
+    count = 0
     
     while(count < len(xs)-1):
         if(not xs):
@@ -154,10 +166,23 @@ def find_last(p, xs):
     there is no element in xs that satisfies p, it returns None.
 
     >>> find_last(lambda x: x > 10, [7,3,5,9,9,1,5,3])
+    >>> find_last(lambda x: True, [])
     >>> find_last(lambda x: x % 2 == 0, [7,2,5,4,4,1,6,3])
     6
+    >>> find_last(lambda s: 'a' in s, ['dog', 'cat', 'goat', 'pig', 'cow', 'ant'])
+    'ant'
+    >>> find_last(lambda s: len(s) == 4, ['dog', 'cat', 'goat', 'pig', 'cow', 'ant'])
+    'goat'
     """
     pass
+    
+    for x in reversed(xs):
+        if p(x):
+            return x     
+        
+    return None
+
+
 
 
 def fixed_point(f, x0, n=1000):
@@ -178,6 +203,17 @@ def fixed_point(f, x0, n=1000):
     found using this simple technique.
     """
     pass
+
+    for _ in range(n):
+        x1 = f(x0)
+        if (x1 == x0):
+            return x0
+        x0 = x1
+    return None
+        
+        
+
+
 
 
 if __name__ == '__main__':
